@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package dogapi;
+
+option go_package = "github.com/fredxfred/dog-api-grpc/proto/dogapi";
+
+service DogService {
+  rpc ListAllBreeds(ListAllBreedsRequest) returns (ListAllBreedsResponse);
+  rpc ListBreeds(ListBreedsRequest) returns (ListBreedsResponse);
+  rpc GetRandomImage(GetRandomImageRequest) returns (GetRandomImageResponse);
+  rpc GetRandomImages(GetRandomImagesRequest) returns (GetRandomImagesResponse);
+  rpc GetBreedImages(GetBreedImagesRequest) returns (GetBreedImagesResponse);
+  rpc GetRandomBreedImage(GetRandomBreedImageRequest) returns (GetRandomBreedImageResponse);
+  rpc GetRandomBreedImages(GetRandomBreedImagesRequest) returns (GetRandomBreedImagesResponse);
+  rpc GetSubBreedImages(GetSubBreedImagesRequest) returns (GetSubBreedImagesResponse);
+  rpc GetRandomSubBreedImage(GetRandomSubBreedImageRequest) returns (GetRandomSubBreedImageResponse);
+  rpc ListSubBreeds(ListSubBreedsRequest) returns (ListSubBreedsResponse);
+}
+
+message ListAllBreedsRequest {}
+
+message ListAllBreedsResponse {
+  map<string, SubBreeds> breeds = 1;
+}
+
+message SubBreeds {
+  repeated string sub_breeds = 1;
+}
+
+message ListBreedsRequest {}
+
+message ListBreedsResponse {
+  repeated string breeds = 1;
+}
+
+message GetRandomImageRequest {}
+
+message GetRandomImageResponse {
+  string image_url = 1;
+}
+
+message GetRandomImagesRequest {
+  int32 count = 1;
+}
+
+message GetRandomImagesResponse {
+  repeated string image_urls = 1;
+}
+
+message GetBreedImagesRequest {
+  string breed = 1;
+}
+
+message GetBreedImagesResponse {
+  repeated string image_urls = 1;
+}
+
+message GetRandomBreedImageRequest {
+  string breed = 1;
+}
+
+message GetRandomBreedImageResponse {
+  string image_url = 1;
+}
+
+message GetRandomBreedImagesRequest {
+  string breed = 1;
+  int32 count = 2;
+}
+
+message GetRandomBreedImagesResponse {
+  repeated string image_urls = 1;
+}
+
+message GetSubBreedImagesRequest {
+  string breed = 1;
+  string sub_breed = 2;
+}
+
+message GetSubBreedImagesResponse {
+  repeated string image_urls = 1;
+}
+
+message GetRandomSubBreedImageRequest {
+  string breed = 1;
+  string sub_breed = 2;
+}
+
+message GetRandomSubBreedImageResponse {
+  string image_url = 1;
+}
+
+message ListSubBreedsRequest {
+  string breed = 1;
+}
+
+message ListSubBreedsResponse {
+  repeated string sub_breeds = 1;
+}
